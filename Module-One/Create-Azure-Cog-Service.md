@@ -31,13 +31,13 @@ You can use the CLI locally or from within the Azure portal. Accessing the CLI f
 1. Sign in to the [Azure portal](https://portal.azure.com)
 1. Locate and select the **Cloud Shell** button on the top nav bar of the Azure portal
 
-    ![Cloud Shell Button in top nav bar](../Linked_Image_Files/cloud_shell.png)
+    ![Cloud Shell Button in top nav bar](../../media/cloud_shell.png)
 
 1. If this is the first time you have opened **Cloud Shell**, you will be prompted to create a storage account.  Follow the procedure to do so
 1. Once the storage account is created, Azure requests a Cloud Shell and then connects to the terminal
 1. You are now ready to issue CLI commands
 
-    ![Cloud Shell terminal opened in the bottom of the browser window](../../Linked_Image_Files/shell_terminal.png)
+    ![Cloud Shell terminal opened in the bottom of the browser window](../media/shell_terminal.png)
 
 ### Install and Use the CLR Locally
 

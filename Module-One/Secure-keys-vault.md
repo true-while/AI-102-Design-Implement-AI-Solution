@@ -18,11 +18,11 @@ Now let’s create the secret cognitive-services-subscription-key in the Azure K
 1. Navigate to your Key Vault instance.
 1. In the left navigation pane, select **Secrets** (in the Settings section).
 
-![Screenshot of Secrets setting in Key Vault](media/02-key-vault-secrets-button.png)
+  ![Screenshot of Secrets setting in Key Vault](media/02-key-vault-secrets-button.png)
 
 1. Select **+ Generate/Import** and add the secret **Name** and **Value**. Then select **Create**.
 
-![Screenshot showing add secret pane with Name and Value populated.](media/02-key-vault-secret-name-and-value.png)
+  ![Screenshot showing add secret pane with Name and Value populated.](media/02-key-vault-secret-name-value.png)
 
 Your application will retrieve the development service **endpoint** and **Key Vault** name from environment variables. Set the environment variables for your session using console window (bash) with the following command. Replace <key-vault-name> and <service-name> with the correct values for your environment.
 

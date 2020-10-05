@@ -1,1 +1,1 @@
-This folder contains the lab files for Module Two Implement Computer Vision Solutions.
+This folder contains the lab steps for Module Two, Implement Computer Vision Solutions.

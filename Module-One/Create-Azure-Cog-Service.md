@@ -105,7 +105,7 @@ Once the CLI is installed, your first step is to sign in to the Azure subscripti
 
 1. If you want to validate these commands, log into the Azure portal to view the newly created items. You can find the new service in the All Resources section of the portal
 
-    ![Newly created Cognitive Service from the Azure portal](../../Linked_Image_Files/new_cog_service.png)
+![Newly created Cognitive Service from the Azure portal](media/new-cognitive-service.png)
 
 1. The image shows myMultiCogService resource, in the cog-services-staging resource group, hosted in the westus region.
 1. The next article will discuss the management of keys for your service

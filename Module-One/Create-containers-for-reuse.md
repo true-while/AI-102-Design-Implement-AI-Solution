@@ -52,6 +52,9 @@ When configuring containers for Cognitive Services, you start with the images th
 
 You create a Dockerfile to define a custom container image with your settings built-in. This file references the parent image in the FROM statement and then applies additional settings based on environment variables. The path you will use points to the language detection image in the Microsoft Container Registry. The ARG statements will let you pass in values during the build step. The steps would be similar for other Cognitive Services images.
 
+>![Note]
+>Before you can complete this exercise, you must install Docker on the local computer. Full instructions and the download are found on the [Docker web site](https://www.docker.com/products/docker-desktop).
+
 Let’s build a docker image for language detection:
 
 1. Copy and paste the following text into a file named Dockerfile.

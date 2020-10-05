@@ -145,7 +145,7 @@ cog-svc   LoadBalancer   10.0.4.255   51.143.48.153   5000:30629/TCP   61s
 
 1. A simple test from the browser will confirm you can access the service and run API commands using the swagger UI. Open your browser to http://<external-ip>:5000/swagger to test it out.
 
-![Screenshot of swagger UI for deployed container.](../../Linked_Image_Files/03-container-deploy-swagger-ss.png)
+  ![Screenshot of swagger UI for deployed container.](media/03-container-deploy-swagger.png)
 
 In this simple deployment, we included a public port, which makes this container accessible to everyone. This is not how you will want to deploy a long running container. You will learn about securing the container and deployment in the next section.
 

@@ -98,10 +98,10 @@ docker run --rm -it -p 5000:5000 cog-svc-language
 
 1. Select **Execute**, which posts the request to your container.
 
-  ![Screenshot of Swagger UI in Try it Out mode. The Execute button is highlighted.](../../Linked_Image_Files/03-container-reuse-swagger-execute.png)
+  ![Screenshot of Swagger UI in Try it Out mode. The Execute button is highlighted.](media/03-container-reuse-swagger-execute.png)
 
 1. View the response.
 
-![Screenshot of Response body section of Swagger UI showing the detected language Response body JSON.](../../Linked_Image_Files/03-container-reuse-swagger-response.png)
+![Screenshot of Response body section of Swagger UI showing the detected language Response body JSON.](media/03-container-reuse-swagger-response.png)
 
 You have successfully built a Docker image, run it as a local container, and tested the containerized Cognitive Services endpoint using Swagger. Next you will decide how to deploy this container to Azure where other applications can use it.

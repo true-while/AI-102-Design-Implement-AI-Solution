@@ -34,13 +34,7 @@ The exercise will cover how to create a simple alert.  Once the alert is in plac
 1. You should see a **Sev 4** alert listed in the table.
 1. Select that alert to open a detailed view on the alert
 
-## Metrics
-
-Metrics are numerical values that describe some aspect of a system at a point in time. Azure Monitor can capture metrics in near real time. The metrics are collected at regular intervals and are useful for alerting because of their frequent sampling. You can use a variety of algorithms to compare a metric to other metrics and observe trends over time.
-
-Metrics are stored in a time-series database. This data store is most effective for analyzing time-stamped data. Metrics are suited for alerting and fast detection of issues. They can tell you about system performance. If needed, you can combine them with logs to identify the root cause of issues.
-
-### Create a Metric
+## Create a Metric
 
 1. Ensure you are signed in to you Azure subscription with the Azure portal open
 1. Locate you Cognitive Service resource, in this example we use the myMultiCogService that we have used in the module
@@ -59,21 +53,7 @@ Metrics are stored in a time-series database. This data store is most effective 
 
 1. You can leave this metric in your Cognitive Service and view the results when you create an application that accesses the resource. 
 
-## Diagnostic Settings
-
-You can configure diagnostic settings in your Cognitive Service resource to provide detailed information for diagnostics and auditing. The platform logs and metrics will be sent to a logging destination that you choose when configuring the settings.  The available data that can be logged includes audit information, RequestResponse data, and AllMetrics.
-
-Currently, you can have the diagnostic information sent to a Log Analytics workspace, Event Hubs, or Azure Storage.  Each diagnostic setting that you configure, can only send data to one destination. If you need to send data to more than one destination, you will need to configure a new diagnostic setting for that destination.
-
-### Diagnostic Destinations
-
-| Destination | Description |
-|---|---|
-| **Log Analytics Workspace** | Collecting logs and metrics into a Log Analytics workspace allows you to analyze them with other monitoring data collected by Azure Monitor using powerful log queries and also to leverage other Azure Monitor features such as alerts and visualizations.|
-| **Event Hubs** | Sending logs and metrics to Event Hubs allows you to stream data to external systems such as third-party SIEMs and other log analytics solutions. |
-| **Azure Storage** | Archiving logs and metrics to an Azure storage account is useful for audit, static analysis, or backup. Compared to Azure Monitor Logs and a Log Analytics workspace, Azure storage is less expensive and logs can be kept there indefinitely. |
-
-### Create a Diagnostic Setting
+## Create a Diagnostic Setting
 
 >[!NOTE]
 >You must have an existing storage account created before completing this exercise.  If you do not have any storage accounts configured yet, follow the instructions on [this page](https://docs.microsoft.com/azure/storage/common/storage-account-create?tabs=azure-portal) to create one, before proceeding with the exercise.
@@ -93,15 +73,7 @@ Currently, you can have the diagnostic information sent to a Log Analytics works
 1. Select the **Save** button.
 1. Data will not be sent to storage account until you have successfully made calls to the Cognitive Service, to which the Metrics are applied.
 
-## Logs
-
-Logs contain time-stamped information about changes made to resources. The type of information recorded varies by log source. The log data is organized into records, with different sets of properties for each type of record. The logs can include numeric values such as Azure Monitor metrics, but most include text data rather than numeric values.
-
-The most common type of log entry records an event. Events can occur sporadically rather than at fixed intervals or according to a schedule. Events are created by applications and services, which provide the context for the events. You can store metric data in logs to combine them with other monitoring data for analysis.
-
-You log data from Azure Monitor in a Log Analytics workspace. Azure provides an analysis engine and a rich query language. The logs show the context of any problems and are useful for identifying root causes.
-
-### Create a Log Analytics Workspace
+## Create a Log Analytics Workspace
 
 1. Sign in to your Azure Subscription.
 1. Select your Cognitive Service.

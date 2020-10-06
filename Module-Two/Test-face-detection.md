@@ -1,3 +1,5 @@
+# Exercise - Test Face Detection
+
 Now let’s use the Face API subscription you just created to detect faces in images from a website. We’re going to use the client SDK to keep our code simple and concise. The same functionality is available using the REST API directly.
 
 ## Environment setup

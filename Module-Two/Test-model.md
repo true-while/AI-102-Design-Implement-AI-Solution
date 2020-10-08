@@ -20,9 +20,10 @@ Now that we've trained our model, it's time to test it. We'll give the model new
 
 1. Click the test image that you uploaded to show a detail of it. Then tag the image as a "Picasso" by selecting **Picasso** from the drop-down list and clicking **Save and close**.
 
-    > By tagging test images this way, you can refine the model without uploading additional training images.
+>[!Tip[
+>By tagging test images this way, you can refine the model without uploading additional training images.
 
-  ![Screenshot showing the image selected for predictions with Picasso tag and Save and Close button highlighted](media/4-tag-test-image.png)
+    ![Screenshot showing the image selected for predictions with Picasso tag and Save and Close button highlighted](media/4-tag-test-image.png)
 
 1. Run another quick test, this time using the file named **FlowersTest.jpg** in the "Quick Test" folder. Confirm that this image is assigned a low probability of being a Picasso, a Rembrandt, or a Pollock.
 

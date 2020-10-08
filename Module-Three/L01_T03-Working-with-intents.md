@@ -17,11 +17,11 @@ You will now create intents for each of the items in the bullet list above.
 
 ## Create intents in code
 
-For this exercise, you will add code to the project you started in unit 2, creating the LU app.  This code uses a list to store the intents you want to add to the LUIS app.  The code will iterate over the items in the list and asynchronously add them to the LUIS app.  To expand the app with more intents, you simply add them to the list.
+For this exercise, you will add code to the project you started in unit 2, creating the LU app.  This code uses a list to store the intents you want to add to the LU app.  The code will iterate over the items in the list and asynchronously add them to the LU app.  To expand the app with more intents, you simply add them to the list.
 
 ### Using Python
 
-1. You will create a new function in your Python code to add intents to the LUIS app.
+1. You will create a new function in your Python code to add intents to the LU app.
 1. In your existing Python code from unit 2, add this function below the create_app() function.
 
    ```python
@@ -64,9 +64,9 @@ For this exercise, you will add code to the project you started in unit 2, creat
            }
    ```   
 
-1. The code creates an asynchronous method called AddIntents.  The method requires a LUIS client and the application info (ID and name).
-1. A generic list is created that holds four intents that will be added to the LUIS app.
-1. Using a foreach loop, the code iterates over the list, takes each string value, and then calls the AddIntentAsync() method from the LUIS authoring API.
+1. The code creates an asynchronous method called AddIntents.  The method requires a LU client and the application info (ID and name).
+1. A generic list is created that holds four intents that will be added to the LU app.
+1. Using a foreach loop, the code iterates over the list, takes each string value, and then calls the AddIntentAsync() method from the LU authoring API.
 1. You will also need to call this method from within Main() so add this line of code just before the closing brace of Main().
 
    ```csharp

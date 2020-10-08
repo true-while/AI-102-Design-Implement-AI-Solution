@@ -19,7 +19,28 @@ You will now create intents for each of the items in the bullet list above.
 
 For this exercise, you will add code to the project you started in unit 2, creating the LU app.  This code uses a list to store the intents you want to add to the LUIS app.  The code will iterate over the items in the list and asynchronously add them to the LUIS app.  To expand the app with more intents, you simply add them to the list.
 
-:::zone pivot="csharp"
+### Using Python
+
+1. You will create a new function in your Python code to add intents to the LUIS app.
+1. In your existing Python code from unit 2, add this function below the create_app() function.
+
+   ```python
+   def add_intents(app_id, app_version):
+       intents = ["Greeting", "SearchPics", "OrderPic", "SharePic"]
+       for intent in intents:
+           intentId = client.model.add_intent(app_id, app_version, intent)
+           print("Intent {} {} added.".format(intent, intentId))
+   ```
+
+1. Modify the create_app() function and add this line of code before the existing return statement.
+
+   ```python
+   add_intents(app_id, app_version)
+   ```
+
+1. You will expand on this code in later units.
+
+### Using C-Sharp
 
 1. Create a new method in the **Program.cs** class to handle adding the intents.  The following code provides the method content.
 
@@ -53,28 +74,3 @@ For this exercise, you will add code to the project you started in unit 2, creat
    ```
 
 1. You will expand on this code in later units.
-
-:::zone-end
-
-:::zone pivot="python"
-
-1. You will create a new function in your Python code to add intents to the LUIS app.
-1. In your existing Python code from unit 2, add this function below the create_app() function.
-
-   ```python
-   def add_intents(app_id, app_version):
-       intents = ["Greeting", "SearchPics", "OrderPic", "SharePic"]
-       for intent in intents:
-           intentId = client.model.add_intent(app_id, app_version, intent)
-           print("Intent {} {} added.".format(intent, intentId))
-   ```
-
-1. Modify the create_app() function and add this line of code before the existing return statement.
-
-   ```python
-   add_intents(app_id, app_version)
-   ```
-
-1. You will expand on this code in later units.
-
-:::zone-end

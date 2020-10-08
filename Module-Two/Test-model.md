@@ -18,10 +18,7 @@ Now that we've trained our model, it's time to test it. We'll give the model new
 
     ![Screenshot of the top bar of the Artworks project with the Predictions tab highlighted](media/4-portal-select-predictions.png)
 
-1. Click the test image that you uploaded to show a detail of it. Then tag the image as a "Picasso" by selecting **Picasso** from the drop-down list and clicking **Save and close**.
-
->[!Tip[
->By tagging test images this way, you can refine the model without uploading additional training images.
+1. Click the test image that you uploaded to show a detail of it. Then tag the image as a "Picasso" by selecting **Picasso** from the drop-down list and clicking **Save and close**.  By tagging test images this way, you can refine the model without uploading additional training images.
 
     ![Screenshot showing the image selected for predictions with Picasso tag and Save and Close button highlighted](media/4-tag-test-image.png)
 

@@ -12,8 +12,8 @@
     > You should always provide at least five example utterances for each intent.
 
 1. Your utterances for the **Greeting** intent should look similar to the following image:
-   > [!div class="mx-imgBorder"]
-   > ![Utterances for the Greeting intent.](media/utterances.png)
+
+    ![Utterances for the Greeting intent.](media/utterances.png)
 
 1. Select **Intents** in the left nav pane.
 1. Select the **SearchPic** intent.
@@ -68,8 +68,8 @@ Next, we have to teach LUIS how to pick out the search subject as the **facet** 
    > Using multi-word keywords, such as "German shepherds", requires you to click and drag across the keywords.
 
 1. Your progress should look similar to the following image:
-   > [!div class="mx-imgBorder"]
-   > ![Keywords selected as facet entities, shown by the term "facet" selected in the image.](media/select-facet-keyword.png)
+
+    ![Keywords selected as facet entities, shown by the term "facet" selected in the image.](media/select-facet-keyword.png)
 
 1. Continue mapping the subjects in the intent with the facet entity using this list as a guide:
 

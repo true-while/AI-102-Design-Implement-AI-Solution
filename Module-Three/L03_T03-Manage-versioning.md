@@ -51,7 +51,7 @@ The recommended method for creating a new LUIS app version is to clone an existi
 1. Select **Versions** in the left toolbar.
 1. Your current versions are displayed.
 
-[The versions page of the LUIS app from the Manage tab](media/versions.png)
+![The versions page of the LUIS app from the Manage tab](media/versions.png)
 
 1. Select the version that you want to clone by hovering your mouse cursor just to the left of the app name and then selecting the radio button that is displayed.
 1. Once you have selected the app, select the **Clone** button in the top nav bar.
@@ -66,22 +66,3 @@ The recommended method for creating a new LUIS app version is to clone an existi
 
    >[!NOTE]
    >You may have to refresh the page when going to the **Build** tab to see the list of intents and entities.
-
-## Manage contributor versions
-
-Microsoft recommends using multiple versions for collaboration among contributors. There are two methods for handling versions among contributors.
-
-- Multiple versions in the same app
-- Multiple versions as apps
-
-### Multiple versions in the same app
-
-When you have multiple contributors, you can clone the base app, for each contributor. If you have five contributors, you would have the base app (version 0.1 for example) and five cloned copies.  Using this method, each contributor makes changes to their version.  When they have completed their work, they can export their version.  The export is in the form of a JSON file or an *lu* file.
-
-You can then take each of the exported files, compare the changes, and merge the changes that you want to keep.  Once you have all changes merged, you change the *versionId* property for that file to indicate it is a new *merged version*.  Then you import the merged version into the original LUIS app.
-
-### Multiple versions as apps
-
-For this method, you would export the base version of the app into a JSON or.lu file. Each contributor then imports that version. Because they are importing the base version, they become the owner of that imported version of the app.  Once they have completed their modifications, they export their version.
-
-You can then compare and merge the changes into a single JSON file.  Change the *versionId* property to indicate it is a new version and import the file into the original LUIS app.

@@ -68,7 +68,7 @@ Let's test what we have so far. We haven't written any code yet, so this test is
 
 1. Observe the **Logs** tab that opens at the bottom of the screen. If everything works as planned, you'll see a message similar to the following message.
 
-    ![Screenshot of response message of a successful call to our function.](media/func-default-run.PNG)
+    ![Screenshot of response message of a successful call to our function.](media/func-default-run.png)
 
     The **Run** button started our function and passed *sample queue data*, the default text from the **Test** request window to our function.
 

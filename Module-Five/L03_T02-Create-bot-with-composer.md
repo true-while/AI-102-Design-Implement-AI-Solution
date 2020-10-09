@@ -13,7 +13,7 @@
 1. Select **OK**.
 1. The Composer will generate some framework aspects of your bot and then open the bot in the interface.
 
-    ![New bot with Composer](../media/new-bot.png)
+    ![New bot with Composer](media/new-bot.png)
 
 1. Under **Filter Dialog**, select **Greeting**.
 1. The designer opens in the middle of the Composer interface with some content already populated. This content in the designer, represents the *ConversationUpdate** activity that is called when a user joins a conversation with the bot. The designer shows that the bot will loop for each item (members added), includes a branch segment that will handle recipient IDs, and then a response item.

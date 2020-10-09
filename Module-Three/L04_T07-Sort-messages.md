@@ -1,6 +1,6 @@
 Let's look at our solution architecture again.
 
-![Conceptual diagram of a feedback sorting architecture.](media/proposed-solution.PNG)
+![Conceptual diagram of a feedback sorting architecture.](media/proposed-solution.png)
 
 As you can see on the right side of this diagram, we want to send messages to three queues. So, we'll define those connections as output bindings in our function. We could create those bindings through the **Output binding** UI. However, to save time, we'll edit the config file directly.
 

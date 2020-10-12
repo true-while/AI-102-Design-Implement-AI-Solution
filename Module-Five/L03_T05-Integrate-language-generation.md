@@ -18,7 +18,7 @@ Currently, your weather bot has only one phrase to greet users with. To add some
 
 All of your bot responses can be found in the **Bot Responses** panel by selecting **Bot Responses** from the menu.  You can expand the menu to see the names in the event the icons are not clear enough.
 
-:::image type="content" source="../media/bot-responses.png" alt-text="bot responses menu selected":::
+![bot responses menu selected](/media/bot-responses.png)
 
 The default view is shown in the previous image.  You can also select the **Edit mode** slider to enter edit mode. You will use **edit mode** in this next exercise to create more responses, using the concept of a template.
 

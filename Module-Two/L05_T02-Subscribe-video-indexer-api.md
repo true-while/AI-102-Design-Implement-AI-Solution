@@ -2,7 +2,7 @@
 
 If you don’t already have a **Video Indexer** account, you can create a free trial account to get started. The following steps walk you through going to the **Video Indexer portal** and getting setup.
 
-1. Open your browser and go to [**Video Indexer Portal**](https://api-portal.videoindexer.ai).
+1. Open your browser and go to [**Video Indexer Portal**](https://www.videoindexer.ai/).
 1. Log in using a personal account (Personal Microsoft account, LinkedIn, Google, Facebook).
 1. Expand the left pane and select **Account Settings**.
 

@@ -6,7 +6,9 @@ In this lab, you will create an Azure Cognitive Service resource using either th
 
 1. To create a new Cognitive Services resource using the Azure portal, sign in to the [Azure portal](https://portal.azure.com).
 1. Select the **+ Create a resource** option in the left nav pane or on the Home page of the Azure portal
-1. In the text entry to search the **Azure Marketplace**, enter **Cognitive Services** for a multi-service resource or the specific name of the Cognitive Service you want to create, such as **QnA Maker**
+1. In the text entry to search the **Azure Marketplace**, enter **Cognitive Services** for a multi-service resource.
+    >[!Tip] 
+    >You can also enter the specific name of the Cognitive Service you want to create, such as **QnA Maker**, to create a single resource service. Use the multi-service option for this lab.
 1. Select the appropriate service from the options
 1. Select the **Create** button
 1. Complete the information required in the dialog according to the descriptions provided in the table
@@ -24,7 +26,7 @@ In this lab, you will create an Azure Cognitive Service resource using either th
 
 Creating the necessary Cognitive Services using the Azure portal is only one method available.  If your organization uses a DevOps process or requires automation for consistency in deployments, updates, and removal of services, the Azure portal is not the ideal choice.  Microsoft offers different options for scripting the creation of Cognitive Services.  One of these options is the Azure Command Line Interface (CLI).
 
-### Use the CLR in the Azure portal
+### Use the CLI in the Azure portal
 
 You can use the CLI locally or from within the Azure portal. Accessing the CLI from the portal, requires that you are logged into the portal.  You can then access the CLI with the following steps:
 
@@ -39,7 +41,7 @@ You can use the CLI locally or from within the Azure portal. Accessing the CLI f
 
 ![Cloud Shell terminal opened in the bottom of the browser window](media/shell-terminal.png)
 
-### Install and Use the CLR Locally
+### Install and Use the CLI Locally
 
 If you need to automate Cognitive Service creation or removal, using the portal is not the best choice. Automation through scripting and the CLI is best done by installing the CLI on your local computer, or the computer in which the scripts will execute. Using the Azure CLI requires installing the tool on the local computer.  Visit the [Azure CLI Installer](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) page to begin the installation.
 

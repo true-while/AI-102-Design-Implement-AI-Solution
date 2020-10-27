@@ -12,16 +12,22 @@ The exercise will cover how to create a simple alert.  Once the alert is in plac
 
     ![Multi-service resource listed](media/verify-resource.png)
     
-1. Select the **Add** button under **Condition**
+1. Select the **Select Condition** button under **Condition**
 1. In the **Configure signal logic** page that appears on the right, you can narrow the **Signal type** by selecting the drop-down list and choosing a category.  There are two choices, **Metrics** and **Activity Log**.  Select **Activity Log** from the drop-down list
 1. From the filtered list, select the **List Keys** option
 1. Leave the default **Chart period** set to **Over the last 6 hours**
 1. Leave the remaining options at their default and select the **Done** button
-1. Alerts server their purpose best when someone is notified that the event has occurred.  We do not have and notification groups or email address configured at this time.  Because the **Action Groups** section is optional, do not configure it at this time unless you already have an Action group configured.
+1. Alerts serve their purpose best when someone is notified that the event has occurred.  We do not have any notification groups or email address configured at this time.  Because the **Action Groups** section is optional, do not configure it at this time unless you already have an Action group configured.
 1. In the **Alert Details** section, enter **Keys List Alert** for the Alert rule name.
 1. Select **Create alert rule**
+
+    ![Create alert rule button](media/keys-list-alert.png)
+    
 1. Azure will create the new Alert
 1. Refresh the page. Azure will tell you that **All is good! You have no alerts**.
+
+    ![All clear message](media/all-clear.png)
+    
 1. Open an Azure CLI Cloud Shell by selecting the **Cloud Shell** icon in the top nav bar
 1. Wait until Azure has requested the Cloud Shell and connected to a terminal
 1. Enter the following command,
@@ -35,7 +41,11 @@ The exercise will cover how to create a simple alert.  Once the alert is in plac
 
 1. On your **Alert page**, change the **Time range** to **Past hour** by selecting from the drop-down list.
 1. You should see a **Sev 4** alert listed in the table.
-1. Select that alert to open a detailed view on the alert
+
+>[!Note]
+>You might have to wait 3 to 5 minutes and refresh the page, before seeing the alerts that are generated from running the CLI command above.
+
+1. Select that Sev 4 alert, bottom of the list, to open a detailed view on the alert.
 
 ## Create a Metric
 
@@ -54,12 +64,14 @@ The exercise will cover how to create a simple alert.  Once the alert is in plac
 
     ![Chart options to change style, view logs, or pin to dashboard](media/metric-chart-options.png)
 
-1. You can leave this metric in your Cognitive Service and view the results when you create an application that accesses the resource. 
+1. You can leave this metric in your Cognitive Service and view the results when you create an application that accesses the resource. There will be no results displayed at this time.
+
+    ![Metric configured for Count of Total Calls, empty chart](media/metric.png)
 
 ## Create a Diagnostic Setting
 
 >[!NOTE]
->You must have an existing storage account created before completing this exercise.  If you do not have any storage accounts configured yet, follow the instructions on [this page](https://docs.microsoft.com/azure/storage/common/storage-account-create?tabs=azure-portal) to create one, before proceeding with the exercise.
+>You must have an existing storage account created before completing this exercise.  If you do not have any storage accounts configured yet, follow the instructions on [this page](https://docs.microsoft.com/azure/storage/common/storage-account-create?tabs=azure-portal) to create one, in the region your service is created, before proceeding with the exercise.
 
 1. After creating a metric for monitoring total calls for the Cognitive Service, you also want to send that metric data to a diagnostic destination.
 1. Sign in to your Azure subscription and open your Cognitive Service resource.
@@ -69,7 +81,7 @@ The exercise will cover how to create a simple alert.  Once the alert is in plac
 1. Under **Category details**, select the **AllMetrics** option.  This will include all metrics that you have configured for this service.
 1. To help reduce the costs of dealing with the diagnostic settings, select the option **Archive to a storage account**.  This allows you to archive the metric data for later evaluation at a reduced cost, when compared to using a Log Analytics Workspace.
 1. Once you select **Archive to a storage account**, you are required to enter some extra information. This relates to the storage account that will be used for the data and the number of days to retain the data.
-1. Enter **30** in the **Retention (days)** location.
+1. Because you are concerned about **Metrics**, enter **30** in the **Retention (days)** location next to **AllMetrics**.
 1. Under the **Destination details** section, notes are displayed letting you know that you will be charged data rates for the storage of the metric data and another note telling you that all storage accounts are displayed.
 1. Select the appropriate subscription from **Subscription** list.
 1. Select an existing storage account from the **Storage account** list.  Note that you must select an existing storage account.  The option to create a new one, from this page, is not possible.
@@ -85,7 +97,7 @@ The exercise will cover how to create a simple alert.  Once the alert is in plac
 1. You can either select the **+ Add** button in the top nav bar or you can select the **Create log analytics workspace** button in the main page of the Logs panel.
 1. Ensure that your active subscription is selected in the **Subscription** option.
 1. Select an appropriate **Resource Group**, such as **cog-services-staging**.
-1. Provide a descriptive name for the Log, example **Multi-cog-serv-log**.
+1. Provide a descriptive name for the Log, example **Multi-cog-serv-log-ga** using your own initial in place of **ga** to ensure a unique name.
 1. Select a **Region** to store the logs.  This should be a region that is appropriate for the log files but is typically the same region as your resources are deployed in.
 1. Select the **Next: Pricing Tier**
 1. The available options may depend on region and subscription level.  For more details on the pricing plans, see the [Log Analytics Pricing](https://go.microsoft.com/fwlink/?linkid=871069)page.
@@ -96,7 +108,8 @@ The exercise will cover how to create a simple alert.  Once the alert is in plac
 
 ### Test your Metrics Report
 
-1. Start by opening Visual Studio Code.
+1. If your do not already have Visual Studio Code installed, [download](https://code.visualstudio.com/Download) and install it.
+1. When installation is complete, open Visual Studio Code.
 1. Either clone or dowload a zip of this GitHub repo, `https://github.com/MicrosoftLearning/AI-102-Process-Speech`.
 1. Open the folder you used for this repo on the local computer.
 1. If you get any messages about installing additional extensions or components, choose to do so.

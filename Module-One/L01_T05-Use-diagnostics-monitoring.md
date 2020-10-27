@@ -10,7 +10,7 @@ The exercise will cover how to create a simple alert.  Once the alert is in plac
 1. Select **+ New alert rule**
 1. Verify that the proper Cognitive Service resource is selected under **Resource**
 
-    ![Multi-service resource listed](verify-resource.png)
+    ![Multi-service resource listed](media/verify-resource.png)
     
 1. Select the **Add** button under **Condition**
 1. In the **Configure signal logic** page that appears on the right, you can narrow the **Signal type** by selecting the drop-down list and choosing a category.  There are two choices, **Metrics** and **Activity Log**.  Select **Activity Log** from the drop-down list

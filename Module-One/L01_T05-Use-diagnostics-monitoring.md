@@ -100,7 +100,7 @@ The exercise will cover how to create a simple alert.  Once the alert is in plac
 1. Provide a descriptive name for the Log, example **Multi-cog-serv-log-ga** using your own initial in place of **ga** to ensure a unique name.
 1. Select a **Region** to store the logs.  This should be a region that is appropriate for the log files but is typically the same region as your resources are deployed in.
 1. Select the **Next: Pricing Tier**
-1. The available options may depend on region and subscription level.  For more details on the pricing plans, see the [Log Analytics Pricing](https://go.microsoft.com/fwlink/?linkid=871069)page.
+1. The available options may depend on region and subscription level.  For more details on the pricing plans, see the [Log Analytics Pricing](https://go.microsoft.com/fwlink/?linkid=871069) page.
 1. Select **Review + Create** unless you want to add tags for reference.  If you want to add tags, select the **Next:Tags** button and enter the appropriate information.
 1. Watch the **status** at the top of the page and when it turns green and indicates **Validation passed**, select **Create** at the bottom of the page.
 1. Once the workspace is deployed, select the **Go to resource** button.
@@ -108,16 +108,33 @@ The exercise will cover how to create a simple alert.  Once the alert is in plac
 
 ### Test your Metrics Report
 
-1. If your do not already have Visual Studio Code installed, [download](https://code.visualstudio.com/Download) and install it.
+In order to test the metrics, you will run a small Python application using Visual Studio Code.  The details of the application are not important at this stage in the course as you will be covering Text Analytics in later lessons.  This code is merely calling the the speech to text translation feature of Text Analytics so you can see a Cognitive Service access in the metrics report.
+
+1. If you do not already have Visual Studio Code installed, [download](https://code.visualstudio.com/Download) and install it.
 1. When installation is complete, open Visual Studio Code.
 1. Either clone or dowload a zip of this GitHub repo, `https://github.com/MicrosoftLearning/AI-102-Process-Speech`.
 1. Open the folder you used for this repo on the local computer.
+
+    ![Visual Studio Code Open Folder](media/vscode-explorer.png)
+    
 1. If you get any messages about installing additional extensions or components, choose to do so.
 1. Open the **transcribe_speech_to_text** folder.
 1. Open the **python** folder.
 1. Select the **speechtotext.py** file in the explorer pane.
 1. Locate the **YourSubscriptionKey**, **YourServiceRegion** line in the file and paste your key into the proper spot and set the region to where you created your **myMultiCogService**, such as **westus**.
-1. You will need to add a package for the Cognitive Services speech functions so open a terminal window in VS Code, and paste the following command in the terminal window, and hit Enter to add the package: `pip install --upgrade azure-cognitiveservices-speech`
+
+    ![key and region placeholders located in code](media/placeholders.png)
+    
+1. Select the **Run Python File in Terminal** button in the button bar or right-click in the Python code window and choose **Run Python File in Terminal**.
+1. An error wlil be generated because we have not added the appropriate package for the Azur Cognitive Services required for this functionality. However, doing this also opens an integrated terminal at the bottom of the Visual Studio Code window with the Python environment configured and set as the default terminal.
+
+>[!Note]
+>If the Python terminal is not configured automatically, follow the instructions located in [this lesson](https://github.com/MicrosoftLearning/AI-102-Design-Implement-AI-Solution/blob/main/Module-Two/L00_00-environment-setup.md) to complete the configuration, then come back and complete this exercise.
+
+1. You will need to add a package for the Cognitive Services speech functions so in the open terminal window in VS Code, paste the following command and hit Enter to add the package: `pip install --upgrade azure-cognitiveservices-speech`
+
+    ![pip command in terminal window of VS Code](media/pip-command.png)
+    
 1. Locate the **Run Python File in Terminal** button in the upper right corner of VS Code Online and select it to run the code.
 1. Run the code three or four more times to ensure we have more than one access of the service.
 1. The result of the speech to text transcription is displayed in the terminal window.  Feel free to download the **narration.wav** file from the GitHub repo if you want to hear the audio that was used.

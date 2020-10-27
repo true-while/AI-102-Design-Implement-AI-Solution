@@ -43,13 +43,13 @@ Once **pip** is installed, you will need to add if to the path in Windows so you
 
 1. Locate the **Path** option, under **System variables** in the bottom section of the **Environment Variables** dialog.
 
-![Path option for System variables in Environment Variables dialog](media/media/system-path.png)
+![Path option for System variables in Environment Variables dialog](media/system-path.png)
 
 1. Select the **Path** option and then select the **Edit** button.
 1. Select the **New** button.
 1. Paste the copied path from above, into the new slot in the **Edit environment variable** dialog.
 
-![Pasting path into new value in Edit environment variable dialog](new-path.png)
+![Pasting path into new value in Edit environment variable dialog](media/new-path.png)
 
 1. Select **OK** to close the Edit window, select **OK** to close the **Environment variable** window, and then select **OK** to close the **System Properties** dialog. 
 1. Restart any command prompt or running instance of Visual Studio Code. Upon restart of these apps, the new path will take effect.

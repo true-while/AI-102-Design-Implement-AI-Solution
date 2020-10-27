@@ -68,7 +68,7 @@ Once the CLI is installed, your first step is to sign in to the Azure subscripti
 1. Once you have successfully logged in, the service responds with a list of your current Azure subscriptions.
 1. If you only have one Azure subscription, you can continue working with the samples here.  
     >[!TIP]
-    > If you have multiple subscriptions, you should choose the active subscription that you will work with. You accomplish this by executing the ``` az account set --subscription <subscriptionName>``` command.  You replace &lt;subscriptionName&gt; with the actual name of the subscription you want to work with.  Use the ``` az account show ``` command to determine what your current subscription is set to.
+    > If you have multiple subscriptions, you should choose the active subscription that you will work with. You accomplish this by executing the ``` az account set --subscription <subscriptionName>``` command.  You replace &lt;subscriptionName&gt; with the actual name of the subscription you want to work with. The subscription name must be surrounded with double quotes as in "mysubscriptioname". Use the ``` az account show ``` command to determine what your current subscription is set to.
 
 1. When creating your Cognitive Service resource, you will place it in a region (the location attribute). Before choosing a region, get a list of regions that are available for your subscription to avoid errors in the script, if you choose a region that is not available for your subscription.
 1. Enter the command

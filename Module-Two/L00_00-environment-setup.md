@@ -21,6 +21,40 @@ Install [Python from python.org](https://www.python.org/downloads/). You can typ
 
 For additional information about using Python on Windows, see [Using Python on Windows at Python.org](https://docs.python.org/3.7/using/windows.html).
 
+You will also require the **pip** utility to install packages. [Download pip](https://bootstrap.pypa.io/get-pip.py) to your local computer.  This is a Python file so you will use Python to install the packages. Open a command prompt, change to the directory where you stored the get-pip.py file, and run the following command to install pip on your Windows computer:
+
+```bash
+py -3 get-pip.py
+```
+
+Once **pip** is installed, you will need to add if to the path in Windows so you can run the command from anywhere, including a terminal window in VS Code.  To add pip to your path, follow these instructions:
+
+1. Locate the **pip** install folder. This will typically be found in the C:\Users\<yourusernam>\AppData\Local\Programs\<Python>\Scripts. Copy this path to the clipboard.
+
+>[!Note] Replace the <yourusername> placeholder with your own username on the computer you are using.  Replace the <Python? placeholder with your Python folder information. On this particular computer, that is Python39.  You can also use the Search option of Windows Explorer to locate the install of pip on your specific computer.
+                                                                                                                            
+1. In the Windows Seach bar, enter **environment** and then select **Edit the system environment variables** option.
+
+![Environment variables search option on Start menu](media/environment.png)
+
+1. In the **System Properties** window, select the **Environment Variables** button in the lower right corner.
+
+![Environment variables button on the System Properties dialog](media/envbutton.png)
+
+1. Locate the **Path** option, under **System variables** in the bottom section of the **Environment Variables** dialog.
+
+![Path option for System variables in Environment Variables dialog](media/media/system-path.png)
+
+1. Select the **Path** option and then select the **Edit** button.
+1. Select the **New** button.
+1. Paste the copied path from above, into the new slot in the **Edit environment variable** dialog.
+
+![Pasting path into new value in Edit environment variable dialog](new-path.png)
+
+1. Select **OK** to close the Edit window, select **OK** to close the **Environment variable** window, and then select **OK** to close the **System Properties** dialog. 
+1. Restart any command prompt or running instance of Visual Studio Code. Upon restart of these apps, the new path will take effect.
+
+
 **macOS**
 
 The system install of Python on macOS is not supported. Instead, an installation through Homebrew is recommended. To install Python using Homebrew on macOS use ```brew install python3``` at the **Terminal** prompt.

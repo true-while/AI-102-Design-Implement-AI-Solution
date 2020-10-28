@@ -73,15 +73,124 @@ You will need the subscription key when using the Speech SDK or the REST APIs bu
 1. The second option is used to view a second key for the service. Under the **RESOURCE MANAGEMENT** group, select **Keys and Endpoint** to view the Service name, the endpoint, and two API keys.
 1. Copy the value of **KEY 1** or **KEY 2** to the clipboard for use in an application.
 
+### Using Python
+
+If you do not already have Python and Visual Studio Code installed on your local computer. Follow these instructions to get your environment ready for the exercise.
+
+1. Download and install a 64-bit version of [Python](https://www.python.org/downloads/), 3.5 to 3.8, on your computer.
+1. Download and install [Visual Studio Code](https://code.visualstudio.com/Download).
+1. Open Visual Studio Code and install the Python extension. Select File > Preferences > Extensions from the menu. Search for Python.
+1. Create a folder to store the project in. An example is by using Windows Explorer.
+1. In Visual Studio Code, select the File icon. Then open the folder you created.
+1. Create a new Python source file, texttospeech.py, by selecting the new file icon.
+1. Copy and paste the Python code here.
+
+    ```python
+    import azure.cognitiveservices.speech as speechsdk
+
+    speech_key, service_region = "YourSubscriptionKey", "YourServiceRegion"
+
+    def translate_speech_to_speech():
+
+        # Creates an instance of a speech translation config with specified subscription key and service region.
+        # Replace with your own subscription key and region identifier from here: https://aka.ms/speech/sdkregion
+        translation_config = speechsdk.translation.SpeechTranslationConfig(subscription=speech_key, region=service_region)
+
+        speech_config = speechsdk.SpeechConfig(subscription=speech_key, region=service_region)
+
+        # Creates a speech synthesizer using the configured voice for audio output.
+        speech_synthesizer = speechsdk.SpeechSynthesizer(speech_config=speech_config)
+
+        # Sets source and target languages.
+        # In this example, the service will translate a US English spoken input, to French and Indonesian language spoken output
+        # Replace with the languages of your choice, from list found here: https://aka.ms/speech/sttt-languages
+        fromLanguage = 'en-US'
+        translation_config.speech_recognition_language = fromLanguage
+
+        # Add more than one language to the collection.
+        # using the add_target_language() method
+        translation_config.add_target_language("fr")
+        translation_config.add_target_language("id-ID")
+
+        # Creates a translation recognizer using and audio file as input.
+        recognizer = speechsdk.translation.TranslationRecognizer(translation_config=translation_config)
+
+        # Starts translation, and returns after a single utterance is recognized. The end of a
+        # single utterance is determined by listening for silence at the end or until a maximum of 15
+        # seconds of audio is processed. It returns the recognized text as well as the translation.
+        # Note: Since recognize_once() returns only a single utterance, it is suitable only for single
+        # shot recognition like command or query.
+        # For long-running multi-utterance recognition, use start_continuous_recognition() instead.
+        print("Say something...")
+        result = recognizer.recognize_once()
+
+    # Check the result
+        if result.reason == speechsdk.ResultReason.TranslatedSpeech:
+            # Output the text for the recognized speech input
+            print("RECOGNIZED '{}': {}".format(fromLanguage, result.text))
+
+            # Loop through the returned translation results
+            for key in result.translations:
+
+            # Using the Key and Value components of the returned dictionary for the translated results
+            # The first portion gets the key (language code) while the second gets the Value
+            # which is the translated text for the language specified
+            # Output the language and then the translated text
+                print("TRANSLATED into {}: {}".format(key, result.translations[key]))
+
+                # If the language code is 'fr' for French, then use the French voice for Julie
+                # If you change the languages in the 'AddTargetLanguage' above, ensure you modify this if statement as well
+                if key == "fr":
+                    speech_config.speech_synthesis_voice_name = "fr-FR-Julie-Apollo"
+
+                    # Update the speech synthesizer to use the proper voice
+                    speech_synthesizer = speechsdk.SpeechSynthesizer(speech_config=speech_config)
+
+                    # Use the proper voice, from the speech synthesizer configuration, to narrate the translated result
+                    # in the native speaker voice.
+                    speech_synthesizer.speak_text_async(result.translations[key]).get()
+                else: # Otherwise, use the voice for the Indonesian translation
+                    speech_config.speech_synthesis_voice_name = "id-ID-Andika"
+
+                    # Update the speech synthesizer to use the proper voice
+                    speech_synthesizer = speechsdk.SpeechSynthesizer(speech_config=speech_config)
+
+                    # Use the proper voice, from the speech synthesizer configuration, to narrate the translated result
+                    # in the native speaker voice.
+                    speech_synthesizer.speak_text_async(result.translations[key]).get()
+
+        elif result.reason == speechsdk.ResultReason.RecognizedSpeech:
+            print("RECOGNIZED: {} (text could not be translated)".format(result.text))
+        elif result.reason == speechsdk.ResultReason.NoMatch:
+            print("NOMATCH: Speech could not be recognized: {}".format(result.no_match_details))
+        elif result.reason == speechsdk.ResultReason.Canceled:
+            print("CANCELED: Reason={}".format(result.cancellation_details.reason))
+            if result.cancellation_details.reason == speechsdk.CancellationReason.Error:
+                print("CANCELED: ErrorDetails={}".format(result.cancellation_details.error_details))
+
+    translate_speech_to_speech()
+    ```
+
+1. Get your key and region from the Speech resource your created on Azure and paste them in the **YourSubscriptionKey** and **YourServiceRegion** placeholders in the code.
+1. If selected, a Python interpreter displays on the left side of the status bar at the bottom of the window. Otherwise, bring up a list of available Python interpreters. Open the command palette (Ctrl+Shift+P) and enter Python: Select Interpreter. Choose an appropriate one.
+1. You can install the Speech SDK Python package from within Visual Studio Code. Do that if it's not installed yet for the Python interpreter you selected. To install the Speech SDK package, open a terminal. Bring up the command palette again (Ctrl+Shift+P) and enter Terminal: Create New Integrated Terminal. In the terminal that opens, enter the command ```python -m pip install azure-cognitiveservices-speech```.
+1. To run the code, right-click somewhere inside the editor. Select Run Python File in Terminal.
+1. At the prompt **Say something...**, speak an English phrase and then pause.
+1. When the program detects a pause in the speech, it will send the audio to the service for translation.
+1. You should see the response output in the Terminal window, indicating the recognized text from your audio and the showing the conversion into the target languages.
+1. Explore other language options by changing the **to** language attributes for another destination language
+1. Change the SpeechSynthesisVoiceName to an appropriate voice for the **to** language to hear the translation spoken with a native sounding voice for that language.
+
+
 ### Using Csharp
 
-## Environment Setup (Optional if you already have Visual Studio Code installed and configured)
+#### Environment Setup (Optional if you already have Visual Studio Code installed and configured)
 
 This exercise will make use of C# for the programming language.  To ensure cross-platform capability, the application code will use [.NET Core](https://dotnet.microsoft.com/download/dotnet-core). If you do not have .NET Core installed on your computer, please download and install from the link.
 
 You will also require [Visual Studio Code](https://code.visualstudio.com/). Download and install before starting the exercises.
 
-## Create the Project
+#### Create the Project
 
 1. Ensure you have [Visual Studio Code](https://code.visualstudio.com/) and [.NET Core](https://dotnet.microsoft.com/download/dotnet-core) installed before moving forward.
 1. Create a new folder for this project. Name the folder **Translate_Speech_Multiple**.
@@ -215,110 +324,3 @@ You will also require [Visual Studio Code](https://code.visualstudio.com/). Down
 1. Explore other language options by changing the **to** language attributes for another destination language
 1. Change the SpeechSynthesisVoiceName to an appropriate voice for the **to** language to hear the translation spoken with a native sounding voice for that language.
 
-### Using Python
-
-If you do not already have Python and Visual Studio Code installed on your local computer. Follow these instructions to get your environment ready for the exercise.
-
-1. Download and install a 64-bit version of [Python](https://www.python.org/downloads/), 3.5 to 3.8, on your computer.
-1. Download and install [Visual Studio Code](https://code.visualstudio.com/Download).
-1. Open Visual Studio Code and install the Python extension. Select File > Preferences > Extensions from the menu. Search for Python.
-1. Create a folder to store the project in. An example is by using Windows Explorer.
-1. In Visual Studio Code, select the File icon. Then open the folder you created.
-1. Create a new Python source file, texttospeech.py, by selecting the new file icon.
-1. Copy and paste the Python code here.
-
-    ```python
-    import azure.cognitiveservices.speech as speechsdk
-
-    speech_key, service_region = "YourSubscriptionKey", "YourServiceRegion"
-
-    def translate_speech_to_speech():
-
-        # Creates an instance of a speech translation config with specified subscription key and service region.
-        # Replace with your own subscription key and region identifier from here: https://aka.ms/speech/sdkregion
-        translation_config = speechsdk.translation.SpeechTranslationConfig(subscription=speech_key, region=service_region)
-
-        speech_config = speechsdk.SpeechConfig(subscription=speech_key, region=service_region)
-
-        # Creates a speech synthesizer using the configured voice for audio output.
-        speech_synthesizer = speechsdk.SpeechSynthesizer(speech_config=speech_config)
-
-        # Sets source and target languages.
-        # In this example, the service will translate a US English spoken input, to French and Indonesian language spoken output
-        # Replace with the languages of your choice, from list found here: https://aka.ms/speech/sttt-languages
-        fromLanguage = 'en-US'
-        translation_config.speech_recognition_language = fromLanguage
-
-        # Add more than one language to the collection.
-        # using the add_target_language() method
-        translation_config.add_target_language("fr")
-        translation_config.add_target_language("id-ID")
-
-        # Creates a translation recognizer using and audio file as input.
-        recognizer = speechsdk.translation.TranslationRecognizer(translation_config=translation_config)
-
-        # Starts translation, and returns after a single utterance is recognized. The end of a
-        # single utterance is determined by listening for silence at the end or until a maximum of 15
-        # seconds of audio is processed. It returns the recognized text as well as the translation.
-        # Note: Since recognize_once() returns only a single utterance, it is suitable only for single
-        # shot recognition like command or query.
-        # For long-running multi-utterance recognition, use start_continuous_recognition() instead.
-        print("Say something...")
-        result = recognizer.recognize_once()
-
-    # Check the result
-        if result.reason == speechsdk.ResultReason.TranslatedSpeech:
-            # Output the text for the recognized speech input
-            print("RECOGNIZED '{}': {}".format(fromLanguage, result.text))
-
-            # Loop through the returned translation results
-            for key in result.translations:
-
-            # Using the Key and Value components of the returned dictionary for the translated results
-            # The first portion gets the key (language code) while the second gets the Value
-            # which is the translated text for the language specified
-            # Output the language and then the translated text
-                print("TRANSLATED into {}: {}".format(key, result.translations[key]))
-
-                # If the language code is 'fr' for French, then use the French voice for Julie
-                # If you change the languages in the 'AddTargetLanguage' above, ensure you modify this if statement as well
-                if key == "fr":
-                    speech_config.speech_synthesis_voice_name = "fr-FR-Julie-Apollo"
-
-                    # Update the speech synthesizer to use the proper voice
-                    speech_synthesizer = speechsdk.SpeechSynthesizer(speech_config=speech_config)
-
-                    # Use the proper voice, from the speech synthesizer configuration, to narrate the translated result
-                    # in the native speaker voice.
-                    speech_synthesizer.speak_text_async(result.translations[key]).get()
-                else: # Otherwise, use the voice for the Indonesian translation
-                    speech_config.speech_synthesis_voice_name = "id-ID-Andika"
-
-                    # Update the speech synthesizer to use the proper voice
-                    speech_synthesizer = speechsdk.SpeechSynthesizer(speech_config=speech_config)
-
-                    # Use the proper voice, from the speech synthesizer configuration, to narrate the translated result
-                    # in the native speaker voice.
-                    speech_synthesizer.speak_text_async(result.translations[key]).get()
-
-        elif result.reason == speechsdk.ResultReason.RecognizedSpeech:
-            print("RECOGNIZED: {} (text could not be translated)".format(result.text))
-        elif result.reason == speechsdk.ResultReason.NoMatch:
-            print("NOMATCH: Speech could not be recognized: {}".format(result.no_match_details))
-        elif result.reason == speechsdk.ResultReason.Canceled:
-            print("CANCELED: Reason={}".format(result.cancellation_details.reason))
-            if result.cancellation_details.reason == speechsdk.CancellationReason.Error:
-                print("CANCELED: ErrorDetails={}".format(result.cancellation_details.error_details))
-
-    translate_speech_to_speech()
-    ```
-
-1. Get your key and region from the Speech resource your created on Azure and paste them in the **YourSubscriptionKey** and **YourServiceRegion** placeholders in the code.
-1. If selected, a Python interpreter displays on the left side of the status bar at the bottom of the window. Otherwise, bring up a list of available Python interpreters. Open the command palette (Ctrl+Shift+P) and enter Python: Select Interpreter. Choose an appropriate one.
-1. You can install the Speech SDK Python package from within Visual Studio Code. Do that if it's not installed yet for the Python interpreter you selected. To install the Speech SDK package, open a terminal. Bring up the command palette again (Ctrl+Shift+P) and enter Terminal: Create New Integrated Terminal. In the terminal that opens, enter the command ```python -m pip install azure-cognitiveservices-speech```.
-1. To run the code, right-click somewhere inside the editor. Select Run Python File in Terminal.
-1. At the prompt **Say something...**, speak an English phrase and then pause.
-1. When the program detects a pause in the speech, it will send the audio to the service for translation.
-1. You should see the response output in the Terminal window, indicating the recognized text from your audio and the showing the conversion into the target languages.
-1. Explore other language options by changing the **to** language attributes for another destination language
-1. Change the SpeechSynthesisVoiceName to an appropriate voice for the **to** language to hear the translation spoken with a native sounding voice for that language.

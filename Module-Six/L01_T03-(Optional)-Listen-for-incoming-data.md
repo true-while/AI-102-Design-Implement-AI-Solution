@@ -4,14 +4,14 @@ Another potential use for Speech-to-Text is to perform the translation operation
 >This exercise assumes you have completed the previous exercise on converting speech from an audio file. If you have not completed that exercise, you will need to import the appropriate packages into the C# or Python project. See the previous exercise mentioned, for instruction on adding the packages.
 
 >[!Note]
->This exercise requires you to have a working microphone connected to the computer.
+>This exercise requires you to have a working microphone connected to the computer and the system configured for audio input. Virtualized environments may require additional configuration to support this lab.
 
 ## Exercise - convert audio from a microphone
 
 1. Create a local folder where you will store the project for this exercise.
 1. Start Visual Studio Code and open the folder you created in step 1.
 
-::: zone pivot="python"
+### Using Python
 
 1. Create a new file in your folder called **microphoneinput.py**.
 1. Paste the following code into the newly created file.
@@ -42,9 +42,7 @@ elif result.reason == speechsdk.ResultReason.Canceled:
 1. Begin speaking so the application can collect the streaming audio.
 1. When you finish, you should see transcribed text output in the terminal.
 
-::: zone-end
-
-::: zone pivot="csharp"
+### Using Csharp
 
 1. Open a terminal window in VS Code by pressing CTRL+`, the Control key plus the back tick.   Optionally, you can choose the View menu and then Terminal.
 1. type the command ```dotnet new console``` and press Enter.
@@ -117,7 +115,6 @@ elif result.reason == speechsdk.ResultReason.Canceled:
 1. When you finish, you should see transcribed text output in the terminal.
 1. When prompted, press <kbd>Enter</kbd> to quit the application.
 
-::: zone-end
 
 >[!Tip]
 >The main difference between this optional exercise and the exercise on converting from an audio file, revolves around not requiring the **AudioConfig** class to handle the audio file formats. This code in this exercise assumes input from an attached microphone.

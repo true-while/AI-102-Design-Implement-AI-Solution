@@ -38,8 +38,6 @@ The environment for this exercise will make use of Visual Studio Code as the edi
 
 With your environment setup, you are now ready to begin the coding exercise.
 
-::: zone pivot="csharp"
-
 ## Exercise - Synthesize speech with C#
 
 1. Using Windows Explorer, create a folder on your local drive to store the project files.  Name the folder **synthesize_text_to_speech**.
@@ -210,9 +208,6 @@ using (var synthesizer = new SpeechSynthesizer(config))
 1. Go back in the code and remove the comment on this line of code, ```// config.Speech = "en-CA-Linda";```
 1. Removing the comment will modify the **SpeechConfig** object to use a voice other than the default. Explore the other voice options at the [language support](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#text-to-speech) page.
 
-::: zone-end
-
-::: zone pivot="python"
 
 ## Exercise - Synthesize speech with Python
 
@@ -268,5 +263,3 @@ elif result.reason == speechsdk.ResultReason.Canceled:
 1. Type some text when you're prompted. The synthesized audio is played using the default voice.
 1. 1. Go back in the code and remove the comment on this line of code, ```# speech_config.speech_synthesis_voice_name = "en-CA-Linda"```
 1. Removing the comment will modify the **SpeechConfig** object to use a voice other than the default. Explore the other voice options at the [language support](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#text-to-speech) page.
-
-::: zone-end

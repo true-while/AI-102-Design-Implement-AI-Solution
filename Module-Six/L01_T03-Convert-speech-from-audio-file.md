@@ -21,7 +21,7 @@ With your environment setup, you are now ready to begin the coding exercise.
 
 ## Exercise - convert speech input to text
 
-::: zone pivot="python"
+### Using Python
 
 1. Start by opening Visual Studio Code.
 1. Create a new folder with a name of your choosing, example **SpeechToTextPython**.
@@ -108,9 +108,7 @@ elif result.reason == speechsdk.ResultReason.Canceled:
 1. The result of the speech to text transcription is displayed in the terminal window.
 1. Feel free to record your own audio file and test with the service.
 
-::: zone-end
-
-::: zone pivot="csharp"
+### Using Csharp
 
 1. Start by opening Visual Studio Code.
 1. Create a new folder with a name of your choosing, example **SpeechToTextCsharp**.
@@ -283,5 +281,3 @@ namespace SpeechToTextCsharp
 1. In the terminal windows, type the following command to also add the Audio package, ```dotnet add package Microsoft.CognitiveServices.Speech.Audio```, and press <kbd>Enter</kbd>.
 1. Ensure that the **narration.wav** file is correctly identified in the ```using (var audioInput = AudioConfig.FromWavFileInput("../narration.wav"))``` line.
 1. In the terminal window, type ```dotnet run``` and if all was entered correctly, you should see the result of the translation in the terminal window.
-
-::: zone-end

@@ -1,3 +1,5 @@
+# Exercise - Convert Speech to an Audio File
+
 When synthesizing text to speech and using audio output on your computer, the SpeechSynthesizer object's constructor only took one argument, a SpeechConfig object. For saving the audio output to a file, you will be required to also create an AudioConfig object and pass that to the SpeechSynthesizer.  The AudioConfig object uses a file name as the property where it will store the audio output. You will also need to add another ```using``` statement to include the Audio portion of the Speech SDK.
 
 The file output will be in .wav format so you can play the audio on any device the supports .wav files. In the code samples used here, you will use the default file format and the default audio properties.
@@ -18,8 +20,6 @@ The environment for this exercise will make use of Visual Studio Code as the edi
 1. If you will be using C# as your code language, start by installing the latest [.NET Core](https://docs.microsoft.com/dotnet/core/install/windows?tabs=netcore31) package for your platform. You can choose Windows, Linux, or macOS from the drop-down on this page.
 1. Once you have .NET Core installed, you will need to add the C# Extension to VS Code. Select the **Extensions** option in the left nav pane, or press **CTRL+SHIFT+X** and enter C# in the search dialog.
 1. You will also make use of a recorded .wav file in this exercise. [Download the narration.wav file](https://github.com/MicrosoftLearning/AI-102-Process-Speech/tree/master/transcribe_speech_to_text/media) and place it in a location where your code will be executed.
-
-## Exercise - Convert text to an audio file
 
 With your environment setup, you are now ready to begin the coding exercise.
 

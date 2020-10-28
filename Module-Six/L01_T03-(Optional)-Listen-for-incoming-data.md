@@ -1,3 +1,5 @@
+# Optional Exercise - Convert Audio from a Microphone
+
 Another potential use for Speech-to-Text is to perform the translation operation on incoming speech that is being heard from a microphone.  This scenario can present itself in a presentation venue where the Speech Service provides the speech-to-text translation of the person(s) speaking, and then displays it as captions on a project screen.  In this exercise, you will see an example of listening for speech from a microphone and translating it to text output.
 
 >[!Note]

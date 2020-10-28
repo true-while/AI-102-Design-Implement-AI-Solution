@@ -43,7 +43,7 @@ After a short delay, your new Speech Translation API subscription will be availa
 > [!TIP]
 > If you miss the notification that your resource is published, select the notification icon in the top bar of the portal, and then select **Go to resource**, as shown in the following figure:
 
-   ![Selecting "Go to resource" from the notification icon](../media/3-subscribe-speech-translation-go-resource.png)
+   ![Selecting "Go to resource" from the notification icon](media/3-subscribe-speech-translation-go-resource.png)
 
 #### View the subscription keys and endpoint
 

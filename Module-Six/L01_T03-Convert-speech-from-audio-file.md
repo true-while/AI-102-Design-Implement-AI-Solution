@@ -1,3 +1,5 @@
+# Exercise - Transcribe Speech Input to Text
+
 In this exercise, you will make use of the Speech Service you created earlier.  This exercise requires configuration on your local computer for a development environment as we will use Visual Studio Code as the editor. If you running in a hosted environment, most of the software should already be installed for you.
 
 ## Environment setup

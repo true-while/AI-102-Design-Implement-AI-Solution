@@ -1,3 +1,5 @@
+# Exercise - Translate Speech to a Different Language
+
 At this point, speech translation may seem like like a straight forward process — simply by building on existing speech translation technology. However, what is required for a meaningful and accurate speech translation system is much more than than simply plugging an existing “traditional” human-to-machine speech recognition engine to the existing text translation one.
 
 Speech translation using the Speech Translation API actually goes through a four-step process.

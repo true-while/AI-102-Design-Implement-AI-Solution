@@ -1,3 +1,5 @@
+# Exercise - Speech Service Environment Setup
+
 For you to be successful in completing the exercises for this module, you must have the proper resources in place on Azure. The following steps outline creating an Azure subscription, or using a trial key.  Creating the Speech Service resources on Azure is required for the exercises to work successfully for synthesizing text to speech.  Complete this section before moving on to the remaining exercises.
 
 ## Create an azure speech resource

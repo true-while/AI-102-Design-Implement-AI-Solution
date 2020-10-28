@@ -38,7 +38,64 @@ The environment for this exercise will make use of Visual Studio Code as the edi
 
 With your environment setup, you are now ready to begin the coding exercise.
 
-## Exercise - Synthesize speech with C#
+## Exercise - Synthesize Speech
+
+### Using Python
+
+If you do not already have Python and Visual Studio Code installed on your local computer. Follow these instructions in the **Environment Setup** section above, to get your environment ready for the exercise.
+
+1. Create a folder to store the project in by using your local file system.
+1. In Visual Studio Code, select the File icon. Then open the folder you created.
+1. Create a new Python source file, **texttospeech.py**, by selecting the new file icon.
+1. Copy and paste the following Python code into the **texttospeech.py** file.
+
+```python
+
+import azure.cognitiveservices.speech as speechsdk
+
+# Creates an instance of a speech config with specified subscription key and service region.
+# Replace with your own subscription key and service region (e.g., "westus").
+speech_key, service_region = "YourSubscriptionKey", "YourServiceRegion"
+speech_config = speechsdk.SpeechConfig(subscription=speech_key, region=service_region)
+
+# uncomment this line to change the voice used for synthesis
+# speech_config.speech_synthesis_voice_name = "en-CA-Linda"
+
+# Creates a speech synthesizer using the default speaker as audio output.
+speech_synthesizer = speechsdk.SpeechSynthesizer(speech_config=speech_config)
+
+# Receives a text from console input.
+print("Type some text that you want to speak...")
+text = input()
+
+# Synthesizes the received text to speech.
+# The synthesized speech is expected to be heard on the speaker with this line executed.
+result = speech_synthesizer.speak_text_async(text).get()
+
+# Checks result.
+if result.reason == speechsdk.ResultReason.SynthesizingAudioCompleted:
+    print("Speech synthesized to speaker for text [{}]".format(text))
+elif result.reason == speechsdk.ResultReason.Canceled:
+    cancellation_details = result.cancellation_details
+    print("Speech synthesis canceled: {}".format(cancellation_details.reason))
+    if cancellation_details.reason == speechsdk.CancellationReason.Error:
+        if cancellation_details.error_details:
+            print("Error details: {}".format(cancellation_details.error_details))
+    print("Did you update the subscription info?")
+```
+
+1. Get your key and region from the Speech resource your created on Azure and paste them in the **YourSubscriptionKey** and **YourServiceRegion** placeholders in the code.
+1. Before you run the code, you need to add the Cognitive Services speech package. In the terminal, enter the command ```pip install --upgrade azure-cognitiveservices-speech```
+
+>[!Tip]
+>The exact command will differ based on the Python environment you are using.  You may have to use ```sudo pip``` or ```python3 ``` in the command.
+
+1. Select the **Run Python File in Terminal** (green arrow) or right-click in the Python file editor and select **Run Python File in Terminal**.
+1. Type some text when you're prompted. The synthesized audio is played using the default voice.
+1. 1. Go back in the code and remove the comment on this line of code, ```# speech_config.speech_synthesis_voice_name = "en-CA-Linda"```
+1. Removing the comment will modify the **SpeechConfig** object to use a voice other than the default. Explore the other voice options at the [language support](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#text-to-speech) page.
+
+### Using Csharp
 
 1. Using Windows Explorer, create a folder on your local drive to store the project files.  Name the folder **synthesize_text_to_speech**.
 1. Open Visual Studio Code.
@@ -206,60 +263,4 @@ using (var synthesizer = new SpeechSynthesizer(config))
 1. You will be prompted to enter some text.  Enter a phrase of your choosing and press Enter.
 1. The computer will read back the text to you in the default voice.
 1. Go back in the code and remove the comment on this line of code, ```// config.Speech = "en-CA-Linda";```
-1. Removing the comment will modify the **SpeechConfig** object to use a voice other than the default. Explore the other voice options at the [language support](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#text-to-speech) page.
-
-
-## Exercise - Synthesize speech with Python
-
-If you do not already have Python and Visual Studio Code installed on your local computer. Follow these instructions in the **Environment Setup** section above, to get your environment ready for the exercise.
-
-1. Create a folder to store the project in by using your local file system.
-1. In Visual Studio Code, select the File icon. Then open the folder you created.
-1. Create a new Python source file, **texttospeech.py**, by selecting the new file icon.
-1. Copy and paste the following Python code into the **texttospeech.py** file.
-
-```python
-
-import azure.cognitiveservices.speech as speechsdk
-
-# Creates an instance of a speech config with specified subscription key and service region.
-# Replace with your own subscription key and service region (e.g., "westus").
-speech_key, service_region = "YourSubscriptionKey", "YourServiceRegion"
-speech_config = speechsdk.SpeechConfig(subscription=speech_key, region=service_region)
-
-# uncomment this line to change the voice used for synthesis
-# speech_config.speech_synthesis_voice_name = "en-CA-Linda"
-
-# Creates a speech synthesizer using the default speaker as audio output.
-speech_synthesizer = speechsdk.SpeechSynthesizer(speech_config=speech_config)
-
-# Receives a text from console input.
-print("Type some text that you want to speak...")
-text = input()
-
-# Synthesizes the received text to speech.
-# The synthesized speech is expected to be heard on the speaker with this line executed.
-result = speech_synthesizer.speak_text_async(text).get()
-
-# Checks result.
-if result.reason == speechsdk.ResultReason.SynthesizingAudioCompleted:
-    print("Speech synthesized to speaker for text [{}]".format(text))
-elif result.reason == speechsdk.ResultReason.Canceled:
-    cancellation_details = result.cancellation_details
-    print("Speech synthesis canceled: {}".format(cancellation_details.reason))
-    if cancellation_details.reason == speechsdk.CancellationReason.Error:
-        if cancellation_details.error_details:
-            print("Error details: {}".format(cancellation_details.error_details))
-    print("Did you update the subscription info?")
-```
-
-1. Get your key and region from the Speech resource your created on Azure and paste them in the **YourSubscriptionKey** and **YourServiceRegion** placeholders in the code.
-1. Before you run the code, you need to add the Cognitive Services speech package. In the terminal, enter the command ```pip install --upgrade azure-cognitiveservices-speech```
-
->[!Tip]
->The exact command will differ based on the Python environment you are using.  You may have to use ```sudo pip``` or ```python3 ``` in the command.
-
-1. Select the **Run Python File in Terminal** (green arrow) or right-click in the Python file editor and select **Run Python File in Terminal**.
-1. Type some text when you're prompted. The synthesized audio is played using the default voice.
-1. 1. Go back in the code and remove the comment on this line of code, ```# speech_config.speech_synthesis_voice_name = "en-CA-Linda"```
 1. Removing the comment will modify the **SpeechConfig** object to use a voice other than the default. Explore the other voice options at the [language support](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#text-to-speech) page.

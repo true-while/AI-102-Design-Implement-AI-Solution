@@ -1,3 +1,5 @@
+# Exercise - Perform Speech Translation from a Microphone
+
 In this exercise, you will learn how to accept audio input from a microphone and translate that audio to a different language. The translation output will be sent to the terminal window as text. The exercise will also use the Speech service to synthesize the translation to speech.  As a result of requiring audio capabilities of your computer, this exercise relies on code being executed locally.  The exercise will not use the Visual Studio Code Online environment as a result.
 
 The speech translation capabilities require working with some key objects:

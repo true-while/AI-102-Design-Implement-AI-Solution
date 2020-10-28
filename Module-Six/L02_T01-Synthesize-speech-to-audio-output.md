@@ -1,3 +1,5 @@
+# Exercise - Synthesize Speech
+
 The ability to synthesize text to speech output will require that your computer to have an audio output device. In this exercise, you will perform text-to-speech synthesis by typing in some text and having that text synthesized to speech and played through your computer's audio output.
 
 >[!TIP]
@@ -38,7 +40,6 @@ The environment for this exercise will make use of Visual Studio Code as the edi
 
 With your environment setup, you are now ready to begin the coding exercise.
 
-## Exercise - Synthesize Speech
 
 ### Using Python
 

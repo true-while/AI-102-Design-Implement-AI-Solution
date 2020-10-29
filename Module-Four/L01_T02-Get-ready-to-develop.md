@@ -1,3 +1,5 @@
+# Exercise - Get Ready to Develop a Search Solution
+
 ## Prepare a development environment
 
 To create the Margie's Travel search solution, you'll need:

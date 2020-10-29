@@ -1,4 +1,4 @@
-## Filter and sort Margie's Travel results
+# Exercise - Filter and sort Margie's Travel results
 
 You can apply filtering and sorting to the Margie's Travel search results by submitting a new query that includes a filter and sort order. 
 Select your preferred language below, and then follow the steps below to filter and sort results.

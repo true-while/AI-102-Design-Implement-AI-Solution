@@ -4,7 +4,7 @@
 
 In the Margie's Travel scenario, the data consists of unstructured documents in Azure Storage, so you must create a data source for the blob container where the documents are stored.
 
-Choose the language you want to use at the top of this page, and follow the steps to create a data source.
+Choose the language you want to use, below, and follow the steps to create a data source.
 
 > [!NOTE]
 > The exercises in this module assume you will use the same language for each task to incrementally build a search solution. If you wish, you can repeat each task in both languages, but doing so will create two search solutions - you can't use a mix of language-specific instructions to create a single solution.

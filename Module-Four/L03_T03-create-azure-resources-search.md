@@ -1,3 +1,5 @@
+# Exercise - Create Azure Resources
+
 The solution you will create for Margie's Travel requires the following resources in your Azure subscription:
 
 - An Azure Storage account with a blob container in which the documents to be searched are stored, and in which you will create the knowledge store.

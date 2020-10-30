@@ -243,7 +243,7 @@ using (var synthesizer = new SpeechSynthesizer(config))
                 }
             }
 
-            static void Main()
+            static async Task Main()
             {
                 await SynthesisToSpeakerAsync();
             }

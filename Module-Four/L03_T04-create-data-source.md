@@ -1,3 +1,5 @@
+# Exercise - Create a Data Source
+
 In the Margie's Travel scenario, the source data consists of unstructured documents in Azure Storage, so you must create a data source for the blob container where the documents are stored.
 
 Choose the language you want to use below, and follow the steps to create a data source.

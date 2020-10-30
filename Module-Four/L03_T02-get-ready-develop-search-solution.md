@@ -1,3 +1,5 @@
+# Exercise - Get Ready to Develop a Solution
+
 In an Azure Cognitive Search solution, you create the index, skillset, and other associated elements of the search solution within an Azure Cognitive Search resource in an Azure subscription. The knowledge store created by your indexing process is hosted in an Azure Storage account.
 
 > [!NOTE]

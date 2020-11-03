@@ -1,4 +1,4 @@
-#Exercise - Create an index for Margie's Travel
+# Exercise - Create an index for Margie's Travel
 
 The index for the Margie's Travel solution must contain fields that can be used to search for information in brochures and customer reviews. Choose your preferred language at the top of this page, and then follow the steps below to create an index for the Margie's Travel search solution.
 

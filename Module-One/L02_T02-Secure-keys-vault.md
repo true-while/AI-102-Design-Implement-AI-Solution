@@ -73,7 +73,7 @@ Let’s create the Service Principal we will use for authentication.
 1. To add permissions for your new service principal to access Key Vault, run the following Azure CLI command with <new-sp-name> replaced with the same value you provided when creating the service principal.
 
     ```azurecli
-    az keyvault set-policy -n %KEY_VAULT_NAME% --spn "https://<new-sp-name>" --secret-permissions get list
+    az keyvault set-policy -n $Env:KEY_VAULT_NAME --spn "https://<new-sp-name>" --secret-permissions get list
     ```
 
 ## Use Key Vault secrets in your application

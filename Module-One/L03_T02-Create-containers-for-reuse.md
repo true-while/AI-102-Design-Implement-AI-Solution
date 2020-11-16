@@ -31,7 +31,7 @@ az acr create --resource-group cogContainerRG --name textAnalyticsConReg --sku B
 az aks create \
     --resource-group cogContainerRG \
     --name textAnalyticsAKS \
-    --node-count 2 \
+    --node-count 1 \
     --generate-ssh-keys \
     --attach-acr textAnalyticsConReg
 ```
@@ -57,31 +57,36 @@ You create a Dockerfile to define a custom container image with your settings bu
 
 Let’s build a docker image for language detection:
 
-1. Copy and paste the following text into a file named Dockerfile.
-FROM mcr.microsoft.com/azure-cognitive-services/language
-ARG key
-ARG billing_endpoint
-ENV apikey=$key
-ENV billing=$billing_endpoint
-ENV eula=accept
+1. Create new folder and copy and paste the following text into a file named Dockerfile.
 
-1. Set two environment variables, replacing <subscription_key> and <service-name> with your own values. You will use these each time you build your image.
+    ```
+    FROM mcr.microsoft.com/azure-cognitive-services/language
+    ARG key
+    ARG billing_endpoint
+    ENV apikey=$key
+    ENV billing=$billing_endpoint
+    ENV eula=accept
+    ```
 
-export COGNITIVE_SERVICE_KEY=<subscription_key>
-export COGNITIVE_SERVICE_ENDPOINT=https://<service-name>.cognitiveservices.azure.com/
+1. Set two environment variables, replacing `<subscription_key>` and `<service-endpoint>` with your own values from language service you build on previous step. You will use these each time you build your image. Run following command from VS code terminal.
 
-1. Build the image from the Dockerfile, using the image name cog-svc-language which is used in the next section.
+    ```cmd
+    $Env:COGNITIVE_SERVICE_KEY='<subscription_key>'
+    $Env:COGNITIVE_SERVICE_ENDPOINT='<service-endpoint>'
+    ```
 
-```bash
-docker build --build-arg key=$COGNITIVE_SERVICE_KEY --build-arg billing_endpoint=$COGNITIVE_SERVICE_ENDPOINT -t cog-svc-language
-```
+1. Build the image from the Dockerfile, using the image name `cog-svc-language` which is used in the next section.
 
-The output from the build statement will show the steps completed and end with success messages.
+    ```cmd
+    docker build -t cog-svc-language --build-arg key=$Env:COGNITIVE_SERVICE_KEY --build-arg billing_endpoint=$Env:COGNITIVE_SERVICE_ENDPOINT --no-cache .
+    ```
 
-```dos
-Successfully built 49379c513da1
-Successfully tagged cog-svc-language:latest
-```
+    The output from the build statement will show the steps completed and end with success messages.
+
+    ```dos
+    Successfully built 49379c513da1
+    Successfully tagged cog-svc-language:latest
+    ```
 
 ### Run your container
 
@@ -89,22 +94,22 @@ Now you can run a container using this image on your local machine. The docker r
 
 1. From the console, run the following command to run a container.
 
-```bash
-docker run --rm -it -p 5000:5000 cog-svc-language
-```
+    ```bash
+    docker run --rm -it -p 5000:5000 cog-svc-language
+    ```
 
-1. Open your browser and navigate to http://0.0.0.0:5000/swagger.
+1. Open your browser and navigate to `http://localhost:5000/swagger`
 
 1. Select **Post** on one of the V3 endpoints, then choose **Try it out**.
 
-  ![Screenshot of swagger UI with Post button and Try it Out highlighted.](media/03-container-reuse-swagger.png)
+    ![Screenshot of swagger UI with Post button and Try it Out highlighted.](media/03-container-reuse-swagger.png)
 
-1. Select **Execute**, which posts the request to your container.
+1. As you can see on 'Example' a few sentence on English, French & Spanish. Select **Execute**, which posts the request to your container.
 
-  ![Screenshot of Swagger UI in Try it Out mode. The Execute button is highlighted.](media/03-container-reuse-swagger-execute.png)
+    ![Screenshot of Swagger UI in Try it Out mode. The Execute button is highlighted.](media/03-container-reuse-swagger-execute.png)
 
-1. View the response.
+1. View the response and identify output with language detection.
 
-![Screenshot of Response body section of Swagger UI showing the detected language Response body JSON.](media/03-container-reuse-swagger-response.png)
+    ![Screenshot of Response body section of Swagger UI showing the detected language Response body JSON.](media/03-container-reuse-swagger-response.png)
 
 You have successfully built a Docker image, run it as a local container, and tested the containerized Cognitive Services endpoint using Swagger. Next you will decide how to deploy this container to Azure where other applications can use it.

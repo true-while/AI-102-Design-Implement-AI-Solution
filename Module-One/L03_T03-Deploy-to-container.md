@@ -31,6 +31,12 @@ For the first step in deployment, you will tag the Docker image and publish to A
     >[!Note]
     >If at any point you receive error unauthorized: authentication required then run the login command again.
 
+1. Lets run following command to attach acr to aks you build on previous exercise. Replace `<your-aks-name>` with name of your Kubernetes service and <acr-name> with name of registry service you just provision above.
+
+    ```azurecli
+    az aks update -n <your-aks-name> -g cogContainerRG --attach-acr <acr-name>
+    ```
+
 1. Next, find the correct docker image to publish. Use the image you created in the previous section, named cog-svc-language.
 
     ```azurecli
@@ -88,7 +94,7 @@ To deploy to Kubernetes, you need a manifest file. This file defines the desired
         spec:
           containers:
           - name: cog-svc
-            image: <login-server>/cog-svc:v1
+            image: <login-server>/cog-svc-language:v1
             ports:
             - name: public-port
               containerPort: 5000
@@ -108,7 +114,7 @@ To deploy to Kubernetes, you need a manifest file. This file defines the desired
     ```yml
     containers:
     - name: cog-svc
-      image: cogsvcacr.azurecr.io/cog-svc:v1
+      image: cogsvcacr.azurecr.io/cog-svc-language:v1
     ```
 
 Now let’s use Azure CLI commands with an existing Azure Kubernetes Service to run the container.
@@ -153,6 +159,8 @@ Now let’s use Azure CLI commands with an existing Azure Kubernetes Service to 
     cog-svc   LoadBalancer   10.0.4.255   51.143.48.153   5000:30629/TCP   61s
     ```
 
+    > [!NOTE] The external IP address required about 2 minutes to be shown. 
+
 1. A simple test from the browser will confirm you can access the service and run API commands using the swagger UI. Open your browser to `http://<external-ip>:5000/swagger` to test it out.
 
     ![Screenshot of swagger UI for deployed container.](media/03-container-deploy-swagger.png)
@@ -160,7 +168,7 @@ Now let’s use Azure CLI commands with an existing Azure Kubernetes Service to 
 In this simple deployment, we included a public port, which makes this container accessible to everyone. This is not how you will want to deploy a long running container. You will learn about securing the container and deployment in the next section.
 
 ## Cleanup
-If you are not moving on to the next exercise immediately, remove Azure Kubernetes Services to avoid charges.
+If you are **not moving on to the next exercise immediately**, remove Azure Kubernetes Services to avoid charges. 
 
 1. To delete the Azure Kubernetes Service, you can use Azure CLI command:
 

@@ -2,22 +2,31 @@
 
 Let’s run a sample application that connects through the exposed endpoint of our Kubernetes deployment.
 
-1. First, set the environment variables we will use to connect, CONTAINER_ENDPOINT and COGNITIVE_SERVICE_KEY (if not already set).  Set the environment variables for your session using console window (bash) with the following command.
+1. First, set the environment variables we will use to connect, `CONTAINER_ENDPOINT` and `COGNITIVE_SERVICE_KEY` (if not already set). From VS Code terminal set the environment variables for your session using following command.
 
-    ```bash
-    export CONTAINER_ENDPOINT=https://<EXTERNAL-IP>:5000
-    export COGNITIVE_SERVICE_KEY=<subscription_key>
+    ```cmd
+    $Env:CONTAINER_ENDPOINT='https://<EXTERNAL-IP>:5000'
+    $Env:COGNITIVE_SERVICE_KEY='<subscription_key>'
     ```
 
 ## Python
 
 Let’s run a sample application that consumes from our language detection container:
 
-1. Import required libraries.
+1. In VS Code create new folder and file `test.py`
+
+1. Import required libraries by run following command in VS code.
+
+    ```cmd
+    pip install azure-identity
+    pip install azure-ai-textanalytics
+    ```
+1. Add following lines to the `test.py` file.
 
     ```python
     import os
     from azure.core.credentials import AzureKeyCredential
+    from azure.identity import DefaultAzureCredential
     from azure.ai.textanalytics import TextAnalyticsClient
     ```
 
@@ -62,7 +71,31 @@ Let’s run a sample application that consumes from our language detection conta
 
 Let’s run a sample application that consumes from our language detection container:
 
-1. Import required libraries.
+
+1. In the folder create file `proj.csproj` with following content:
+
+    ```XML
+    <Project Sdk="Microsoft.NET.Sdk.Web">
+
+        <PropertyGroup>
+            <TargetFramework>netcoreapp3.1</TargetFramework>
+            <LangVersion>preview</LangVersion>
+        </PropertyGroup>
+
+        <ItemGroup>
+        </ItemGroup>
+
+        <ItemGroup>
+          <PackageReference Include="Azure.AI.TextAnalytics" Version="5.0.0" />
+          <PackageReference Include="Azure.Identity" Version="1.3.0" />
+        </ItemGroup>
+
+    </Project>
+    ```
+
+1. Create file `test.cs`.
+
+1. In the file import required libraries.
 
     ```csharp
     using System;
@@ -102,6 +135,13 @@ Let’s run a sample application that consumes from our language detection conta
     }
     ```
 
+1. Execute project by running following commands:
+
+    ```cmd
+    dotnet build
+    dotnet run
+    ```
+
 1. Detected languages are printed, one per document submitted.
 
     ```bash
@@ -116,9 +156,9 @@ You have completed all the exercises, but don’t forget to clean up your resour
 
 If you are not using the resource group for other services, you can remove everything in it by running:
 
-    ```azurecli
-    az group delete --name <resource-group> --yes --no-wait
-    ```
+```azurecli
+az group delete --name <resource-group> --yes --no-wait
+```
 
 Alternatively, you could remove individual services with the following commands:
 

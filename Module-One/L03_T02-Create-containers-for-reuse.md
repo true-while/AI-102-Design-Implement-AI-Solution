@@ -23,6 +23,7 @@ az cognitiveservices account create --kind TextAnalytics --resource-group cogCon
 
 ```azurecli
 az acr create --resource-group cogContainerRG --name textAnalyticsConReg --sku Basic
+az acr update --name textAnalyticsConReg --admin-enabled true
 ```
 
 ### Azure Kubernetes service
@@ -32,8 +33,7 @@ az aks create \
     --resource-group cogContainerRG \
     --name textAnalyticsAKS \
     --node-count 1 \
-    --generate-ssh-keys \
-    --attach-acr textAnalyticsConReg
+    --generate-ssh-keys 
 ```
 
 ## Gather required parameter values
@@ -78,14 +78,14 @@ Let’s build a docker image for language detection:
 1. Build the image from the Dockerfile, using the image name `cog-svc-language` which is used in the next section.
 
     ```cmd
-    docker build -t cog-svc-language --build-arg key=$Env:COGNITIVE_SERVICE_KEY --build-arg billing_endpoint=$Env:COGNITIVE_SERVICE_ENDPOINT --no-cache .
+    docker build -t cog-svc --build-arg key=$Env:COGNITIVE_SERVICE_KEY --build-arg billing_endpoint=$Env:COGNITIVE_SERVICE_ENDPOINT --no-cache .
     ```
 
     The output from the build statement will show the steps completed and end with success messages.
 
     ```dos
     Successfully built 49379c513da1
-    Successfully tagged cog-svc-language:latest
+    Successfully tagged cog-svc:latest
     ```
 
 ### Run your container
@@ -95,7 +95,7 @@ Now you can run a container using this image on your local machine. The docker r
 1. From the console, run the following command to run a container.
 
     ```bash
-    docker run --rm -it -p 5000:5000 cog-svc-language
+    docker run --rm -it -p 5000:5000 cog-svc
     ```
 
 1. Open your browser and navigate to `http://localhost:5000/swagger`
